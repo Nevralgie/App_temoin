@@ -5,8 +5,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import io
 import base64
+import os
 
-app = Flask(__name__)
+# Define static folder for css files
+STATIC_DIR = os.path.abspath('./static')
+
+# app = Flask(__name__) # to make the app run without any
+app = Flask(__name__, static_folder=STATIC_DIR)
 
 img = io.BytesIO()
 
@@ -18,6 +23,7 @@ stock_data = {}
 for stock_name in stock_names:
     # Fetch stock data
     data = yf.download(stock_name, start='2022-01-01', end='2023-01-01')
+    print(data)
 
 # Calculate 50-day moving average
     data['MA50'] = data['Close'].rolling(window=50).mean()
