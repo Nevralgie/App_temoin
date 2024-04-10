@@ -5,12 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock Analysis</title>
+    <link href="{{ url_for('static', filename='/styles/main.css') }}" rel="stylesheet" type="text/css">
 </head>
 <body>
-    {% for stock_name, data in stock_data.items() %}
-        <h2>{{ stock_name }}</h2>
-        <img src="{{ data.plot_url }}" alt="Plot for {{ stock_name }}">
-        {{ data.data | safe }}
-    {% endfor %}
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        {% for stock_name, data in stock_data.items() %}
+            <div class="stock">
+                <h2>{{ stock_name }}</h2>
+                <img src="{{ data.plot_url }}" alt="Plot for {{ stock_name }}">
+                <pre>{{ data.data | safe }}</pre>
+            </div>
+        {% endfor %}
+    </div>
+    <footer>
+        <p>&copy; 2023 Stock Analysis. All rights reserved.</p>
+    </footer>
 </body>
 </html>
