@@ -1,1 +1,1 @@
-docker run -d --name testcont -p 80:5000 nevii/apptestvf
+Python sample app - Display historical datas of compagnies stocks (yfinance) and calculate some indicators based on those datas.
